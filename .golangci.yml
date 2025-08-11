@@ -1,0 +1,19 @@
+run:
+  timeout: 5m
+
+# golangci-lint version
+version: 1.54.2
+
+linters:
+  enable:
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - typecheck
+    - unused
+    - gofmt
+    - goimports
+    - misspell
+    - unconvert
