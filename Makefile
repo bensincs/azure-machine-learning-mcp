@@ -50,7 +50,18 @@ test-server:
 # Lint the code
 lint:
 	@echo "Running linter..."
-	golangci-lint run
+	@if command -v golangci-lint >/dev/null 2>&1; then \
+		echo "Using system golangci-lint"; \
+		golangci-lint run; \
+	elif [ -f $(shell go env GOPATH)/bin/golangci-lint ]; then \
+		echo "Using GOPATH golangci-lint"; \
+		$(shell go env GOPATH)/bin/golangci-lint run; \
+	else \
+		echo "golangci-lint not found. Installing v1 for local development..."; \
+		go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest; \
+		echo "Note: CI uses golangci-lint v2. Local version is v1."; \
+		$(shell go env GOPATH)/bin/golangci-lint run; \
+	fi
 
 # Format the code
 format:

@@ -1,7 +1,16 @@
-version: 2
-
 run:
   timeout: 5m
 
 linters:
-  default: all
+  enable:
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - typecheck
+    - unused
+    - gofmt
+    - goimports
+    - misspell
+    - unconvert
