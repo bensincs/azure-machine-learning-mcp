@@ -227,5 +227,5 @@ func (wt *WorkspaceTools) handleCreateWorkspace(ctx context.Context, request mcp
 	}
 
 	return mcp.NewToolResultText(fmt.Sprintf("Successfully created workspace '%s' in resource group '%s' at location '%s'. Workspace ID: %s",
-		workspaceName, resourceGroupName, location, helpers.GetStringValue(result.Workspace.ID))), nil
+		workspaceName, resourceGroupName, location, helpers.GetStringValue(result.ID))), nil
 }
