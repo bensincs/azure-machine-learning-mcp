@@ -33,19 +33,19 @@ test-coverage:
 # Run specific tests
 test-helpers:
 	@echo "Running helper tests..."
-	go test -v ./internal/helpers/tests/...
+	go test -v ./internal/helpers/
 
 test-azure:
 	@echo "Running Azure client tests..."
-	go test -v ./internal/azure/tests/...
+	go test -v ./internal/azure/
 
 test-tools:
 	@echo "Running tools tests..."
-	go test -v ./internal/tools/tests/...
+	go test -v ./internal/tools/
 
 test-server:
 	@echo "Running server tests..."
-	go test -v ./internal/server/tests/...
+	go test -v ./internal/server/
 
 # Lint the code
 lint:

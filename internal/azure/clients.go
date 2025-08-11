@@ -9,14 +9,14 @@ import (
 
 // ClientSet holds all Azure ML service clients
 type ClientSet struct {
-	WorkspacesClient             *armmachinelearning.WorkspacesClient
-	ComputeClient                *armmachinelearning.ComputeClient
-	QuotasClient                 *armmachinelearning.QuotasClient
-	UsagesClient                 *armmachinelearning.UsagesClient
-	VirtualMachineSizesClient    *armmachinelearning.VirtualMachineSizesClient
-	PrivateEndpointClient        *armmachinelearning.PrivateEndpointConnectionsClient
-	WorkspaceConnectionsClient   *armmachinelearning.WorkspaceConnectionsClient
-	WorkspaceFeaturesClient      *armmachinelearning.WorkspaceFeaturesClient
+	WorkspacesClient           *armmachinelearning.WorkspacesClient
+	ComputeClient              *armmachinelearning.ComputeClient
+	QuotasClient               *armmachinelearning.QuotasClient
+	UsagesClient               *armmachinelearning.UsagesClient
+	VirtualMachineSizesClient  *armmachinelearning.VirtualMachineSizesClient
+	PrivateEndpointClient      *armmachinelearning.PrivateEndpointConnectionsClient
+	WorkspaceConnectionsClient *armmachinelearning.WorkspaceConnectionsClient
+	WorkspaceFeaturesClient    *armmachinelearning.WorkspaceFeaturesClient
 }
 
 // NewClientSet creates a new set of Azure ML clients
@@ -68,13 +68,13 @@ func NewClientSet(subscriptionID string) (*ClientSet, error) {
 	}
 
 	return &ClientSet{
-		WorkspacesClient:             workspacesClient,
-		ComputeClient:                computeClient,
-		QuotasClient:                 quotasClient,
-		UsagesClient:                 usagesClient,
-		VirtualMachineSizesClient:    vmSizesClient,
-		PrivateEndpointClient:        privateEndpointClient,
-		WorkspaceConnectionsClient:   workspaceConnectionsClient,
-		WorkspaceFeaturesClient:      workspaceFeaturesClient,
+		WorkspacesClient:           workspacesClient,
+		ComputeClient:              computeClient,
+		QuotasClient:               quotasClient,
+		UsagesClient:               usagesClient,
+		VirtualMachineSizesClient:  vmSizesClient,
+		PrivateEndpointClient:      privateEndpointClient,
+		WorkspaceConnectionsClient: workspaceConnectionsClient,
+		WorkspaceFeaturesClient:    workspaceFeaturesClient,
 	}, nil
 }

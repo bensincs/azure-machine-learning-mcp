@@ -30,15 +30,15 @@ func TestWorkspaceTools_New(t *testing.T) {
 // and actual Azure resources to test properly
 func TestWorkspaceToolHandlers_Mock(t *testing.T) {
 	tests := []struct {
-		name         string
-		toolName     string
-		params       map[string]interface{}
-		shouldError  bool
+		name        string
+		toolName    string
+		params      map[string]interface{}
+		shouldError bool
 	}{
 		{
-			name:     "list_workspaces_by_subscription missing subscription_id",
-			toolName: "list_workspaces_by_subscription",
-			params:   map[string]interface{}{},
+			name:        "list_workspaces_by_subscription missing subscription_id",
+			toolName:    "list_workspaces_by_subscription",
+			params:      map[string]interface{}{},
 			shouldError: true,
 		},
 		{
@@ -53,7 +53,7 @@ func TestWorkspaceToolHandlers_Mock(t *testing.T) {
 			name:     "create_workspace missing required params",
 			toolName: "create_workspace",
 			params: map[string]interface{}{
-				"subscription_id": "test-sub",
+				"subscription_id":     "test-sub",
 				"resource_group_name": "test-rg",
 			},
 			shouldError: true,

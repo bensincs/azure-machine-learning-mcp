@@ -185,10 +185,10 @@ func TestExtractResourceGroupFromID(t *testing.T) {
 
 func TestGetWorkspacePropertyString(t *testing.T) {
 	props := &armmachinelearning.WorkspaceProperties{
-		Description:        to.Ptr("Test workspace"),
-		FriendlyName:       to.Ptr("My Workspace"),
-		DiscoveryURL:       to.Ptr("https://discovery.azureml.ms/"),
-		MlFlowTrackingURI:  to.Ptr("https://mlflow.azureml.ms/"),
+		Description:       to.Ptr("Test workspace"),
+		FriendlyName:      to.Ptr("My Workspace"),
+		DiscoveryURL:      to.Ptr("https://discovery.azureml.ms/"),
+		MlFlowTrackingURI: to.Ptr("https://mlflow.azureml.ms/"),
 	}
 
 	tests := []struct {

@@ -1,0 +1,5 @@
+{
+  "yaml.schemas": {
+    "https://www.schemastore.org/yamllint.json": "file:///Users/bensinclair/projects/aml-cmp/.golangci.yml"
+  }
+}
