@@ -1,0 +1,30 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+*.md
+DEVELOPMENT.md
+
+# Build artifacts
+bin/
+coverage.out
+coverage.html
+
+# IDE
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Test files
+*_test.go
+
+# GitHub workflows (not needed in container)
+.github/

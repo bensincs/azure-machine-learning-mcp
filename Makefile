@@ -1,11 +1,25 @@
 # Azure ML MCP Server Makefile
 
-.PHONY: build test test-verbose clean lint format deps help run
+.PHONY: build test test-verbose clean lint format deps help run docker-build docker-run docker-clean
 
 # Build the application
 build:
 	@echo "Building Azure ML MCP Server..."
 	go build -o bin/mcp-server ./cmd/mcp-server
+
+# Docker commands
+docker-build:
+	@echo "Building Docker image..."
+	docker build -t azure-ml-mcp:latest .
+
+docker-run:
+	@echo "Running Docker container..."
+	docker run --rm -it azure-ml-mcp:latest
+
+docker-clean:
+	@echo "Cleaning Docker images..."
+	docker rmi azure-ml-mcp:latest || true
+	docker system prune -f
 
 # Install dependencies
 deps:
@@ -114,4 +128,7 @@ help:
 	@echo "  check          - Run format, lint, and test"
 	@echo "  build-all      - Build for multiple platforms"
 	@echo "  bench          - Run benchmarks"
+	@echo "  docker-build   - Build Docker image"
+	@echo "  docker-run     - Run Docker container"
+	@echo "  docker-clean   - Clean Docker images"
 	@echo "  help           - Show this help message"
