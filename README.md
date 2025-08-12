@@ -30,11 +30,12 @@ This MCP server provides the following Azure ML management capabilities:
 ## Prerequisites
 
 1. **Azure Subscription**: You need an active Azure subscription
-2. **Azure Authentication**: Set up Azure authentication using one of these methods:
-   - Azure CLI: Run `az login`
-   - Service Principal: Set environment variables `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_TENANT_ID`
-   - Managed Identity: When running on Azure resources
-   - Visual Studio Code: Use the Azure Account extension
+2. **Azure Authentication**: The server will automatically prompt for authentication when you first use it. You can use any of these methods:
+   - **Interactive Browser Login**: The server will open your browser for authentication (default)
+   - **Device Code Flow**: Used automatically in headless environments
+   - **Azure CLI**: If you're already logged in with `az login`
+   - **Service Principal**: Set environment variables `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_TENANT_ID`
+   - **Managed Identity**: When running on Azure resources
 
 3. **Go 1.18+**: Required to build and run the server
 
@@ -77,7 +78,22 @@ Add this server to your MCP client configuration (e.g., Claude Desktop):
 
 ### Authentication Setup
 
-The server uses the Azure Default Credential chain. Set up authentication by:
+The server will automatically prompt for Azure authentication when you first connect. No pre-authentication is required!
+
+**Authentication Methods (in order of precedence):**
+
+1. **Existing Credentials** (if available):
+   - Azure CLI credentials (`az login`)
+   - Managed Identity (when running on Azure)
+   - Environment variables for Service Principal
+
+2. **Interactive Authentication** (if no existing credentials):
+   - **Browser Login**: Opens your default browser for Microsoft login
+   - **Device Code**: Used in headless environments (displays a code to enter at https://microsoft.com/devicelogin)
+
+**Manual Setup Options:**
+
+If you prefer to set up authentication manually:
 
 1. **Azure CLI** (Recommended for development):
 ```bash

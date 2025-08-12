@@ -9,8 +9,7 @@
       ],
       "cwd": "/Users/bensinclair/projects/aml-cmp",
       "env": {
-        "_comment": "These settings ensure Azure CLI credentials are used",
-        "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+        "_comment": "Interactive authentication will prompt when needed - no pre-auth required",
       }
     }
   },
