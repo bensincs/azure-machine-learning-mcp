@@ -1,17 +1,14 @@
 {
   "servers": {
     "azure-ml-mcp": {
-      "type": "stdio",
-      "command": "/opt/homebrew/bin/go",
+      "command": "docker",
       "args": [
         "run",
-        "./cmd/mcp-server"
-      ],
-      "cwd": "/Users/bensinclair/projects/aml-cmp",
-      "env": {
-        "_comment": "Interactive authentication will prompt when needed - no pre-auth required",
-      }
+        "--rm",
+        "-i",
+        "--pull=always",
+        "ghcr.io/bensincs/azure-machine-learning-mcp:latest"
+      ]
     }
-  },
-  "inputs": []
+  }
 }

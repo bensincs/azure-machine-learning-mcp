@@ -24,7 +24,21 @@ type ClientSet struct {
 
 // getAzureCredential attempts to get Azure credentials using multiple methods
 func getAzureCredential() (azcore.TokenCredential, error) {
-	// First, try DefaultAzureCredential (includes Azure CLI, managed identity, etc.)
+	// First, try Azure CLI credentials (which VS Code often uses)
+	if cred, err := azidentity.NewAzureCLICredential(nil); err == nil {
+		// Test the credential by trying to get a token
+		ctx := context.Background()
+		_, err = cred.GetToken(ctx, policy.TokenRequestOptions{
+			Scopes: []string{"https://management.azure.com/.default"},
+		})
+		if err == nil {
+			log.Println("Using Azure CLI credentials (Visual Studio/VS Code compatible)")
+			return cred, nil
+		}
+		log.Printf("Azure CLI credentials failed: %v", err)
+	}
+
+	// Second, try DefaultAzureCredential (includes Azure CLI, managed identity, etc.)
 	if cred, err := azidentity.NewDefaultAzureCredential(nil); err == nil {
 		// Test the credential by trying to get a token
 		ctx := context.Background()
