@@ -23,7 +23,8 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o mcp-server ./cmd/
 FROM alpine:latest
 
 # Install ca-certificates for HTTPS requests and Azure CLI dependencies
-RUN apk --no-cache add ca-certificates curl bash python3 py3-pip
+RUN apk --no-cache add ca-certificates curl bash python3 py3-pip \
+  gcc python3-dev musl-dev linux-headers
 
 # Install Azure CLI
 RUN pip3 install azure-cli --break-system-packages
