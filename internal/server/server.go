@@ -50,7 +50,5 @@ func (ms *MCPServer) Serve() error {
 	if err := server.ServeStdio(ms.server); err != nil {
 		return fmt.Errorf("server error: %v", err)
 	}
-
-	fmt.Println("Azure ML MCP server is running. Press Ctrl+C to stop.")
 	return nil
 }

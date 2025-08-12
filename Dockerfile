@@ -22,20 +22,27 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o mcp-server ./cmd/
 # Final stage
 FROM alpine:latest
 
-# Install ca-certificates for HTTPS requests
-RUN apk --no-cache add ca-certificates
+# Install ca-certificates for HTTPS requests and Azure CLI dependencies
+RUN apk --no-cache add ca-certificates curl bash python3 py3-pip
+
+# Install Azure CLI
+RUN pip3 install azure-cli --break-system-packages
 
 # Create non-root user
 RUN addgroup -g 1001 -S appgroup && \
   adduser -u 1001 -S appuser -G appgroup
 
-WORKDIR /root/
+# Create .azure directory for the user
+RUN mkdir -p /home/appuser/.azure && \
+  chown -R appuser:appgroup /home/appuser/.azure
+
+WORKDIR /home/appuser/
 
 # Copy the binary from builder stage
 COPY --from=builder /app/mcp-server .
 
 # Change ownership to non-root user
-RUN chown appuser:appgroup /root/mcp-server
+RUN chown appuser:appgroup /home/appuser/mcp-server
 
 # Switch to non-root user
 USER appuser

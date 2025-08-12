@@ -7,7 +7,9 @@
         "--rm",
         "-i",
         "--pull=always",
-        "ghcr.io/bensincs/azure-machine-learning-mcp:latest"
+        "-v",
+        "~/.azure:/home/appuser/.azure:ro",
+        "ghcr.io/bensincs/azure-machine-learning-mcp:main-ab7fa83"
       ]
     }
   }
