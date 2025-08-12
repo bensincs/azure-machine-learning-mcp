@@ -75,59 +75,6 @@ go mod tidy
 go build ./cmd/mcp-server
 ```
 
-## Configuration
-
-### MCP Client Configuration
-
-Add this server to your MCP client configuration (e.g., Claude Desktop):
-
-```json
-{
-  "servers": {
-    "azure-ml": {
-      "command": "go",
-      "args": ["run", "./cmd/mcp-server"],
-      "cwd": "/path/to/aml-cmp",
-      "env": {}
-    }
-  }
-}
-```
-
-### Authentication Setup
-
-The server will automatically prompt for Azure authentication when you first connect. No pre-authentication is required!
-
-**Authentication Methods (in order of precedence):**
-
-1. **Existing Credentials** (if available):
-   - Azure CLI credentials (`az login`)
-   - Managed Identity (when running on Azure)
-   - Environment variables for Service Principal
-
-2. **Interactive Authentication** (if no existing credentials):
-   - **Browser Login**: Opens your default browser for Microsoft login
-   - **Device Code**: Used in headless environments (displays a code to enter at https://microsoft.com/devicelogin)
-
-**Manual Setup Options:**
-
-If you prefer to set up authentication manually:
-
-1. **Azure CLI** (Recommended for development):
-```bash
-az login
-```
-
-2. **Service Principal** (Recommended for production):
-```bash
-export AZURE_CLIENT_ID="your-client-id"
-export AZURE_CLIENT_SECRET="your-client-secret"
-export AZURE_TENANT_ID="your-tenant-id"
-```
-
-3. **Managed Identity** (When running on Azure):
-   - No additional setup required when running on Azure VMs, App Service, etc.
-
 ## Usage Examples
 
 ### 1. List Workspaces
