@@ -2,14 +2,17 @@
   "servers": {
     "azure-ml-mcp": {
       "command": "docker",
+      "env": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+      },
       "args": [
         "run",
         "--rm",
         "-i",
         "--pull=always",
         "-v",
-        "~/.azure:/home/appuser/.azure:ro",
-        "ghcr.io/bensincs/azure-machine-learning-mcp:main-ab7fa83"
+        "~/.azure:/home/appuser/.azure",
+        "ghcr.io/bensincs/azure-machine-learning-mcp:main-af8279b"
       ]
     }
   }

@@ -2,6 +2,10 @@
 
 A comprehensive Model Context Protocol (MCP) server that provides access to Azure Machine Learning services through the Azure SDK for Go. This server enables you to manage Azure ML workspaces, compute resources, quotas, and more through standardized MCP tools.
 
+## 🚀 Quick Start
+
+**Want to use this in VS Code right away?** Check out our [VS Code Setup Guide](VSCODE_SETUP.md) for step-by-step instructions to get started in minutes!
+
 ## Features
 
 This MCP server provides the following Azure ML management capabilities:
@@ -40,6 +44,20 @@ This MCP server provides the following Azure ML management capabilities:
 3. **Go 1.18+**: Required to build and run the server
 
 ## Installation
+
+### VS Code Setup (Recommended)
+
+For the easiest setup experience in Visual Studio Code, follow our dedicated [VS Code Setup Guide](VSCODE_SETUP.md). This guide covers:
+
+- Docker-based setup with pre-built images
+- Local binary setup from source
+- Authentication configuration
+- Troubleshooting common issues
+- Usage examples with GitHub Copilot
+
+### Manual Installation
+
+If you prefer to set up manually or use with other MCP clients:
 
 1. Clone this repository:
 ```bash
