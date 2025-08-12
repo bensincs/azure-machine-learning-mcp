@@ -2,23 +2,15 @@
   "servers": {
     "azure-ml-mcp": {
       "type": "stdio",
-      "command": "docker",
+      "command": "/opt/homebrew/bin/go",
       "args": [
         "run",
-        "--rm",
-        "-i",
-        "--env",
-        "AZURE_AUTH_METHOD=cli",
-        "--env",
-        "PATH=/usr/local/bin:/usr/bin:/bin",
-        "--volume",
-        "/Users/bensinclair/.azure:/root/.azure:ro",
-        "--volume",
-        "/Users/bensinclair/.azure:/home/appuser/.azure:ro",
-        "ghcr.io/bensincs/azure-machine-learning-mcp:latest"
+        "./cmd/mcp-server"
       ],
+      "cwd": "/Users/bensinclair/projects/aml-cmp",
       "env": {
-        "_comment": "Azure credentials are mounted as volumes into the container"
+        "_comment": "These settings ensure Azure CLI credentials are used",
+        "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
       }
     }
   },
